@@ -1,16 +1,16 @@
-# 1. 필요한 라이브러리 불러오기
+# 1. 필요 라이브러리
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 import os
 import matplotlib.pyplot as plt
 
-# 2. 기본 설정값 정하기
-data_dir = "data"              # 데이터가 있는 폴더
-img_size = (224, 224)          # 이미지 크기
-batch_size = 32                # 한 번에 몇 장씩 학습할지
+# 2. 기본값 설정
+data_dir = "data"              
+img_size = (224, 224)         
+batch_size = 32                
 
-# 3. 데이터셋 불러오기 (train / val / test)
+# 3. 데이터셋 로드
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
     os.path.join(data_dir, "train"),
     image_size=img_size,
@@ -33,7 +33,7 @@ test_ds = tf.keras.preprocessing.image_dataset_from_directory(
     shuffle=False
 )
 
-# 4. 데이터 속도 최적화
+# 4. 데이터 파이프라인 최적화
 AUTOTUNE = tf.data.AUTOTUNE
 train_ds = train_ds.shuffle(1000).prefetch(AUTOTUNE)
 val_ds = val_ds.prefetch(AUTOTUNE)
@@ -50,7 +50,7 @@ data_augmentation = keras.Sequential(
 
 preprocess_input = tf.keras.applications.efficientnet.preprocess_input
 
-# 6. CNN 기반 모델 만들기 (EfficientNet 전이학습)
+# 6. CNN 기반 모델 구축축
 base_model = tf.keras.applications.EfficientNetB0(
     include_top=False,
     input_shape=img_size + (3,),
@@ -68,7 +68,7 @@ outputs = layers.Dense(1, activation="sigmoid")(x)
 
 model = keras.Model(inputs, outputs)
 
-# 7. 모델 컴파일 (학습 방법 설정)
+# 7. 모델 컴파일
 model.compile(
     optimizer=keras.optimizers.Adam(learning_rate=1e-3),
     loss="binary_crossentropy",
@@ -133,4 +133,5 @@ plt.plot(history.history["val_recall"], label="val_recall")
 plt.xlabel("Epoch")
 plt.ylabel("Recall")
 plt.legend()
+
 plt.savefig("recall_curve.png")
