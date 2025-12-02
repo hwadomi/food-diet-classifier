@@ -1,3 +1,5 @@
+python 3.10.x 이 필요합니다.
+
 ### (선택) 가상환경 설정
 다른 프로젝트와 패키지 버전이 섞이지 않도록,  
 가상환경에서 실행하는 것을 권장합니다.
@@ -36,7 +38,12 @@ project_root/               # 프로젝트 루트 폴더
       └─ evaluation/
 ```
 
-### 1. python prepare_food11_binary.py
+### 1. Dataset 준비
+```bash
+# prepare_food11_binary.py
+python prepare_food11_binary.py
+```
+
 prepare_food11_binary.py 실행 후, 디렉터리 구조:
 ```
 project_root/               # 프로젝트 루트 폴더
@@ -63,7 +70,15 @@ project_root/               # 프로젝트 루트 폴더
       └─ 1_diet/
 ```
 
-### 2. python main.py
+### 2. 모델 학습 및 평가
+```bash
+# main.py
+python main.py
+```
    
-### 3. python predict_single.py
+### 3. 개별 이미지 파일 테스트
 predict_single.py 내부에서 테스트하고자하는 이미지 파일의 경로를 변경해주어야 합니다.
+```bash
+# predict_single.py
+python predict_single.py
+```
