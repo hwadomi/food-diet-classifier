@@ -12,7 +12,7 @@ cd project_root
 python -m venv .venv
 
 # 가상환경 활성화
-.\.venv\Scripts\activate
+.\.venv\Scripts\activate.ps1
 
 # 필요 라이브러리 설치
 pip install -r requirements.txt
