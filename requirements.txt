@@ -1,2 +1,5 @@
-tensorflow
-matplotlib
+tensorflow==2.10.0
+numpy==1.23.5
+matplotlib==3.8.0
+pillow==10.0.0
+h5py==3.8.0
