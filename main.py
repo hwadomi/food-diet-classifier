@@ -94,9 +94,9 @@ print(f"Test accuracy:  {test_acc:.4f}")
 print(f"Test precision: {test_prec:.4f}")   # diet(1) 기준
 print(f"Test recall:    {test_rec:.4f}")   # diet(1) 기준
 
-# 10. 모델 저장
-model.save("diet_cnn_model.h5")
-print("모델 저장 완료: diet_cnn_model.h5")
+# 10. 모델 가중치 저장
+model.save_weights("diet_cnn_weights.h5")
+print("모델 가중치 저장 완료: diet_cnn_weights.h5")
 
 # 11. 학습 곡선 출력
 # accuracy curve 
@@ -135,3 +135,4 @@ plt.ylabel("Recall")
 plt.legend()
 
 plt.savefig("recall_curve.png")
+
