@@ -93,8 +93,3 @@ if __name__ == "__main__":
         print("파일이 존재하는지 확인해주세요.")
     else:
         predict_image(img_file)
-
-    test_image_path = "./hamburger.png"
-    predict_image(test_image_path)
-
-
